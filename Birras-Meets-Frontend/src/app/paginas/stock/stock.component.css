@@ -1,0 +1,11 @@
+mat-card{
+    width: 30%;
+    text-align: center;
+}
+.container{
+    background-image: url(/assets/images/back.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
