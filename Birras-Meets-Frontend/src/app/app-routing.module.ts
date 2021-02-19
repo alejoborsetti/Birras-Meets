@@ -6,6 +6,8 @@ import { RegisterComponent } from './paginas/register/register.component';
 import { StockComponent } from './paginas/stock/stock.component';
 
 const routes: Routes = [
+  // { path: '', redirectTo: '/paginas', pathMatch: 'full' },
+  // { path: 'paginas', loadChildren: './paginas/paginas.module#PaginasModule' },
   { path: '', pathMatch: 'full', redirectTo: 'login' },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },

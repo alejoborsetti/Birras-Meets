@@ -11,6 +11,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CalendarComponent } from './paginas/calendar/calendar.component';
 import { StockComponent } from './paginas/stock/stock.component';
 import { HeaderComponent } from './components/header/header.component'
+import { HttpClientModule } from '@angular/common/http';
+// import { PaginasRoutingModule } from './paginas/paginas-routing.module'
+import { CommonModule } from '@angular/common';
+import { PaginasService } from './services/paginas.service';
 
 @NgModule({
   declarations: [
@@ -29,8 +33,11 @@ import { HeaderComponent } from './components/header/header.component'
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
+    // PaginasRoutingModule,
+    HttpClientModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [PaginasService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
