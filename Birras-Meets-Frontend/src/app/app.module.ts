@@ -12,7 +12,6 @@ import { CalendarComponent } from './paginas/calendar/calendar.component';
 import { StockComponent } from './paginas/stock/stock.component';
 import { HeaderComponent } from './components/header/header.component'
 import { HttpClientModule } from '@angular/common/http';
-// import { PaginasRoutingModule } from './paginas/paginas-routing.module'
 import { CommonModule } from '@angular/common';
 import { PaginasService } from './services/paginas.service';
 
@@ -33,9 +32,8 @@ import { PaginasService } from './services/paginas.service';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    // PaginasRoutingModule,
     HttpClientModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [PaginasService],
   bootstrap: [AppComponent],
