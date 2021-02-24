@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { Appointment } from 'src/app/models/appointments';
 import { AppointmentService } from 'src/app/services/appointments.service';
+import { Appointment } from 'src/app/models/appointment';
 import { mergeMap } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-appointments-list',
-  templateUrl: './appointments-list.component.html',
-  styleUrls: ['./appointments-list.component.css']
+  selector: 'app-appointment-list',
+  templateUrl: './appointment-list.component.html',
+  styleUrls: ['./appointment-list.component.css']
 })
-export class AppointmentsListComponent implements OnInit {
+export class AppointmentListComponent implements OnInit {
 
   public loading = true;
-  public errorMsg: string = "";
-  public successMsg: string = "";
+  public errorMsg = '';
+  public successMsg = '';
   public appointments: Appointment[] = [];
   public columns = ['appointmentDate', 'name', 'email', 'cancel'];
 
   constructor(private appointmentService: AppointmentService) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
     this.appointmentService.getAppointments()
       .subscribe((appointments: Appointment[]) => {
         this.appointments = appointments;
@@ -30,14 +30,14 @@ export class AppointmentsListComponent implements OnInit {
         });
   }
 
-  cancelAppointment(id: string) {
+  public cancelAppointment(id: string): void {
     this.appointmentService.cancelAppointment(id)
       .pipe(
         mergeMap(() => this.appointmentService.getAppointments())
       )
       .subscribe((appointments: Appointment[]) => {
         this.appointments = appointments;
-        this.successMsg = 'Reunión cancelada exitosamente'
+        this.successMsg = 'Reunión cancelada exitosamente';
       },
         (error: ErrorEvent) => {
           this.errorMsg = error.error.message;

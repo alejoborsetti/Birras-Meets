@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppointmentService } from 'src/app/services/appointments.service';
-import { Appointment } from 'src/app/models/appointments';
+import { Appointment } from 'src/app/models/appointment';
+
 @Component({
   selector: 'app-appointment',
   templateUrl: './appointment.component.html',
@@ -8,18 +9,18 @@ import { Appointment } from 'src/app/models/appointments';
 })
 export class AppointmentComponent implements OnInit {
 
-  public successMsg: string ="";
-  public errorMsg: string ="";
-  appointmentDate: string ="";
-  name: string ="";
-  email: string="";
+  public successMsg = '';
+  public errorMsg = '';
+  public appointmentDate = '';
+  public name = '';
+  public email = '';
 
   constructor(private appointmentService: AppointmentService) { }
 
-  ngOnInit() {
+  public ngOnInit(): void {
   }
 
-  createAppointment() {
+  public createAppointment(): void {
     this.successMsg = '';
     this.errorMsg = '';
     this.appointmentService.createAppointment(this.appointmentDate, this.name, this.email)
@@ -28,7 +29,7 @@ export class AppointmentComponent implements OnInit {
         this.name = '';
         this.email = '';
         const appointmentDate = new Date(createdAppointment.appointmentDate).toDateString();
-        this.successMsg = `Reunión creada exitosamente para el día ${appointmentDate}`;
+        this.successMsg = `Appointment Booked Successfully for ${appointmentDate}`;
       },
       (error: ErrorEvent) => {
         this.errorMsg = error.error.message;

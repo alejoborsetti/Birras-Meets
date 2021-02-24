@@ -1,9 +1,8 @@
-import { ObserversModule } from '@angular/cdk/observers';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { Appointment } from '../models/appointments';
+import { Appointment } from '../models/appointment';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +14,7 @@ export class AppointmentService {
   constructor(private http: HttpClient) { }
 
   getAppointments(): Observable<Appointment[]> {
-    return this.http.get<Appointment[]>('${this.BASE_URL}/appointments')
+    return this.http.get<Appointment[]>('${this.BASE_URL}/appointments');
   }
 
   createAppointment(appointmentDate: string, name: string, email: string): Observable<Appointment> {
