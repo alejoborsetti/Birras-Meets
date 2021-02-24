@@ -4,6 +4,7 @@ const authRoutes = require('./auth/auth.routes');
 const express = require('express');
 const propierties = require('./config/properties');
 const DB = require('./config/db');
+const nodemailer = require("nodemailer");
 // init DB
 DB();
 
@@ -73,3 +74,46 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+
+// Nodemailer
+
+app.get("/", (req, res) => {
+  res.send(
+    "<h1 style='text-align: center'>Wellcome to FunOfHeuristic <br><br>😃👻😃👻😃👻😃👻😃</h1>"
+  );
+});
+
+app.post("/sendmail", (req, res) => {
+  console.log("request came");
+  let user = req.body;
+  sendMail(user, info => {
+    console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
+    res.send(info);
+  });
+});
+
+async function sendMail(user, callback) {
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    host: "smtp.gmail.com",
+    port: 465,
+    secure: true, // true for 465, false for other ports
+    auth: {
+        user: 'alejoborsetti@gmail.com',
+        pass: 'rfyroeodytwnllze',
+    }
+  });
+
+  let mailOptions = {
+    from: '"Birras Meets"<example.gimail.com>', // sender address
+    to: user.email, // list of receivers
+    subject: "Juntada creada exitosamente", // Subject line
+    html: `<h1>Hi ${user.name}</h1><br>
+    <h4>Thanks for joining us</h4>`
+  };
+
+  // send mail with defined transport object
+  let info = await transporter.sendMail(mailOptions);
+
+  callback(info);
+}

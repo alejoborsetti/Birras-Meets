@@ -25,15 +25,26 @@ export class AppointmentComponent implements OnInit {
     this.errorMsg = '';
     this.appointmentService.createAppointment(this.appointmentDate, this.name, this.email)
       .subscribe((createdAppointment: Appointment) => {
+        const user: any = {
+          name: this.name,
+          email: this.email,
+        };
         this.appointmentDate = '';
         this.name = '';
         this.email = '';
         const appointmentDate = new Date(createdAppointment.appointmentDate).toDateString();
         this.successMsg = `Appointment Booked Successfully for ${appointmentDate}`;
-      },
-      (error: ErrorEvent) => {
-        this.errorMsg = error.error.message;
+        this.appointmentService.sendEmail('http://localhost:3000/sendmail', user).subscribe(
+          data => {
+            const res: any = data;
+            console.log(
+              `${user.name} is successfully register and mail has been sent and the message id is ${res.messageId}`
+            );
+          },
+          (error: ErrorEvent) => {
+            this.errorMsg = error.error.message;
+          });
       });
-  }
 
+  }
 }

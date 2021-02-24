@@ -25,4 +25,7 @@ export class AppointmentService {
   cancelAppointment(id: string): Observable<any> {
     return this.http.delete(`${this.BASE_URL}/appointments/${id}`);
   }
+  sendEmail(url: string, data: []): Observable <any>{
+    return this.http.post(url, data);
+  }
 }
