@@ -11,6 +11,7 @@ import { mergeMap } from 'rxjs/operators';
 export class AppointmentListComponent implements OnInit {
 
   public loading = true;
+  public error = false;
   public errorMsg = '';
   public successMsg = '';
   public appointments: Appointment[] = [];
@@ -40,6 +41,7 @@ export class AppointmentListComponent implements OnInit {
         this.successMsg = 'Reunión cancelada exitosamente';
       },
         (error: ErrorEvent) => {
+          this.error = true;
           this.errorMsg = error.error.message;
         });
   }
