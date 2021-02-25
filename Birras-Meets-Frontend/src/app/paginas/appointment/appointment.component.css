@@ -1,6 +1,18 @@
 .form-container {
-    margin-top: 50px;
-    max-width: 350px;
+    background-color: white;
+    position: relative;
+    top: 0;
+    opacity: 1;
+    margin: auto;
+    padding: 60px 50px 40px 50px;
+    width: 100%;
+    background: #fff;
+    border-radius: 10px;
+    transform: scale(1);
+    -webkit-transform: scale(1);
+    -ms-transform: scale(1);
+    z-index: 5;
+    max-width: 330px;
   }
   
   form {
@@ -17,3 +29,11 @@
     background-color: #73cc73;
     padding: 10px;
   }
+
+  .container{
+    background-image: url(/assets/images/back.jpg);
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}

@@ -77,17 +77,10 @@ app.use('/users', usersRouter);
 
 // Nodemailer
 
-app.get("/", (req, res) => {
-  res.send(
-    "<h1 style='text-align: center'>Wellcome to FunOfHeuristic <br><br>😃👻😃👻😃👻😃👻😃</h1>"
-  );
-});
-
 app.post("/sendmail", (req, res) => {
   console.log("request came");
   let user = req.body;
   sendMail(user, info => {
-    console.log(`The mail has beed send 😃 and the id is ${info.messageId}`);
     res.send(info);
   });
 });
@@ -107,9 +100,8 @@ async function sendMail(user, callback) {
   let mailOptions = {
     from: '"Birras Meets"<example.gimail.com>', // sender address
     to: user.email, // list of receivers
-    subject: "Juntada creada exitosamente", // Subject line
-    html: `<h1>Hi ${user.name}</h1><br>
-    <h4>Thanks for joining us</h4>`
+    subject: "Reunión de Birras Meets", // Subject line
+    html: `<h4>Reunión creada exitosamente.</h4>`
   };
 
   // send mail with defined transport object

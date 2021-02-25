@@ -33,13 +33,10 @@ export class AppointmentComponent implements OnInit {
         this.name = '';
         this.email = '';
         const appointmentDate = new Date(createdAppointment.appointmentDate).toDateString();
-        this.successMsg = `Appointment Booked Successfully for ${appointmentDate}`;
+        this.successMsg = `Reunión creada exitosamente para el día ${appointmentDate}`;
         this.appointmentService.sendEmail('http://localhost:3000/sendmail', user).subscribe(
           data => {
             const res: any = data;
-            console.log(
-              `${user.name} is successfully register and mail has been sent and the message id is ${res.messageId}`
-            );
           },
           (error: ErrorEvent) => {
             this.errorMsg = error.error.message;

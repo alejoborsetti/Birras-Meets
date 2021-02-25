@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { RegisterComponent } from './paginas/register/register.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-// import { AngularMaterialModule } from './angular-material.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StockComponent } from './paginas/stock/stock.component';
@@ -58,13 +57,12 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     StockComponent,
     HeaderComponent,
     AppointmentListComponent,
-    AppointmentComponent
+    AppointmentComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    // AngularMaterialModule,
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
@@ -106,7 +104,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   ],
   providers: [PaginasService],
   bootstrap: [AppComponent],
-  // entryComponents: [AppointmentComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule { }

@@ -8,7 +8,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class PaginasService {
-  PAGINAS_SERVER: string = 'http://localhost:3000';
+  PAGINAS_SERVER = 'http://localhost:3000';
   authSubject = new BehaviorSubject(false);
   private token: any;
   constructor(private httpClient: HttpClient) { }
@@ -38,19 +38,19 @@ export class PaginasService {
 
   logout(): void {
     this.token = '';
-    localStorage.removeItem("ACCESS_TOKEN");
-    localStorage.removeItem("EXPIRES_IN");
+    localStorage.removeItem('ACCESS_TOKEN');
+    localStorage.removeItem('EXPIRES_IN');
   }
 
   private saveToken(token: string, expiresIn: string): void {
-    localStorage.setItem("ACCESS_TOKEN", token);
-    localStorage.setItem("EXPIRES_IN", expiresIn);
+    localStorage.setItem('ACCESS_TOKEN', token);
+    localStorage.setItem('EXPIRES_IN', expiresIn);
     this.token = token;
   }
 
   private getToken(): string {
     if (!this.token) {
-      this.token = localStorage.getItem("ACCESS_TOKEN");
+      this.token = localStorage.getItem('ACCESS_TOKEN');
     }
     return this.token;
   }
