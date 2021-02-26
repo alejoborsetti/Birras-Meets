@@ -27,6 +27,15 @@
 	max-width: 330px;
 }
 
+.entrar {
+	color: #ffd740;
+	border: 1px solid currentColor;
+    padding: 0 15px;
+    line-height: 34px;
+	background: transparent;
+	cursor: pointer;
+}
+
 
 
 
